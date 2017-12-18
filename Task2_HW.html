@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html ng-app="massiveFilter">
+<head>
+    <title>Massive filter</title>
+
+    <script src="angular.js"></script>
+    <script>
+        angular.module("massiveFilter", [])
+            .controller("massiveFilterCtrl", function ($scope) {
+                $scope.items = [];
+
+                for (var i = 0; i < 50; i++) {
+                    $scope.items[i] = Math.floor(Math.random() * (50 - 0 + 1)) + 0;
+                }
+            });
+    </script>
+    <script src="MassiveFilter.js"></script>
+</head>
+<body ng-controller="massiveFilterCtrl">
+<h3>Started massive {{items.length}}</h3>
+<span ng-repeat="item in items track by $index">{{item}},</span>
+<h3>Sorted massive {{items.length}}</h3>
+<span ng-repeat="item in items | filterMassive track by $index">{{item}},</span>
+</div>
+</body>
+</html>
